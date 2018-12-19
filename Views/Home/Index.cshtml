@@ -19,7 +19,50 @@
     <script src="~/Scripts/Chart.min.js"></script>
     <script src="~/Scripts/angular-chart.min.js"></script>
     <link href="~/css/angular-chart.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            function hideShow(el) {
+                $("#box").hide();
+                $("#box2").hide();
+                $("." + el).show();
+                $(".navContent").removeClass("active");
+                $('a[href="#' + el + '"]').addClass("active");
+            };
+            $("#Home").click(function () {
+                hideShow("wiersz");
+            });
+            $("#Calendar").click(function () {
+                hideShow("subjectList");
+            });
+            $("#Courses").click(function () {
+                hideShow("Courses");
+            });
+            var el = window.location.hash;
+            if (el.length > 0) {
+                el = el.substr(1);
+                if ($('a[href="#' + el + '"]')[0]) {
+                    hideShow(el);
+                } else {
+                    hideShow("breakfast");
+                }
+            }
+            $('.tab').click(function (e) {
+                e.preventDefault();
+                hideShow(this.hash.substr(1));
+            });
+        });
 
+    </script>
+    <script>
+        $(function () {
+            $(".example, .days").sortable({
+                connectWith: "connectedSep"
+            }).disableSelection();
+        });
+    </script>
     <script src="~/SPA/Controller/HomeController.js"></script>
     <script src="~/SPA/Controller/CalendarController.js"></script>
     <script src="~/SPA/Controller/CoursesController.js"></script>
@@ -27,17 +70,20 @@
     <script src="~/SPA/Controller/SearchForPersonController.js"></script>
     <script src="~/SPA/Controller/MainController.js"></script>
     <script src="~/SPA/App.js"></script>
+    <script src="https://johnny.github.io/jquery-sortable/js/jquery-sortable.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <link rel="stylesheet" href="~/css/styles.css" />
+    <link rel="stylesheet" href="css/styless.css" />
 </head>
 <body>
     <div ng-app="App" ng-controller="MainController">
         <nav>
             <div style="float:left">
                 <ul class="navList">
-                    <li><a href="#/home" class="navContent">Home</a></li>
-                    <li><a href="#/calendar" class="navContent">Calendar</a></li>
-                    <li><a href="#/courses" class="navContent">Your courses</a></li>
+                    <li><a href="/#/wnioski" class="navContent" id="Home">Home</a></li>
+                    <li><a href="/#/calendar" class="navContent" id="Calendar">Calendar</a></li>
+                    <li><a href="/#/courses" class="navContent" id="Courses">Your courses</a></li>
                     <li style="clear: both"></li>
                 </ul>
             </div>
@@ -55,10 +101,130 @@
 
         </div>
 
-        <footer>
-            <p>&copy; @DateTime.Now.Year — Usososo</p>
-        </footer>
 
     </div>
+    <div class="wiersz" id="box" style="display:none">
+        <div class="USOSnews wnioski" style="width:100%;">
+            <header>
+                <h1 id="wnioski">Wnioski o świadczenia na rok akademicki 2018/2019</h1>
+            </header>
+            <section id="wnioski" style="column-count: 1;">
+
+                <p><img src="Models/skocz.gif" style="padding: 2px 4px 0 0;">wniosek o stypendium ministra: <strong>otwarte, terminy:&nbsp;<a href="http://www.studiuje.uj.edu.pl/studenci/pomoc-materialna/stypendium-ministra">studenci</a> | <a href="http://www.studiuje.uj.edu.pl/doktoranci/pomoc-materialna/stypendium-ministra">doktoranci</a></strong></p>
+                <p><img src="Models/skocz.gif" style="padding: 2px 4px 0 0;">oświadczenie o dochodach 2017:&nbsp;<strong>otwarte</strong><br></p>
+                <p><img src="Models/skocz.gif" style="padding: 2px 4px 0 0;">wniosek o dom studencki:</p>
+                <ul>
+                    <li>studenci UJ:&nbsp;<strong>III tura, od 18 do 24 września</strong><br>Wniosek o miejsce w domu studenckim w III turze składa się osobiście 24 września w godz. 14:00-18;00 przy ul. Czapskich 4, pokoje 15-22. Wnioski przyjmuje UKE SSUJ.</li>
+                    <li>doktoranci UJ:&nbsp;<strong>II tura, od 1 do 11 września</strong></li>
+                    <li>studenci cudzoziemcy – rozpoczynający naukę na UJ:&nbsp;<strong>od 14 do 25 września</strong></li>
+                    <li>studenci i doktoranci UJ CM:&nbsp;<strong>tura ciągła - miejsca przyznawane w miarę dostępności do V 2019</strong></li>
+                </ul>
+                <p><img src="Models/skocz.gif" style="padding: 2px 4px 0 0;">wnioski o stypendia i zapomogę – studenci:</p>
+                <ul>
+                    <li>stypendium socjalne:<strong> do 30 września</strong></li>
+                    <li>stypendium specjalne dla osób niepełnosprawnych: <strong>do 30 września</strong></li>
+                    <li>stypendium rektora dla najlepszych studentów: <strong>do 20 października</strong></li>
+                    <li>zapomoga: <strong>otwarte</strong></li>
+                </ul>
+                <p><img src="Models/skocz.gif" style="padding: 2px 4px 0 0;">wnioski o stypendia i zapomogę – doktoranci:</p>
+                <ul>
+                    <li>stypendium socjalne:&nbsp;<strong>do 15 października</strong></li>
+                    <li>stypendium specjalne dla osób niepełnosprawnych: <strong>do 15 października</strong></li>
+                    <li>stypendium dla najlepszych doktorantów: <strong>do 15 października</strong></li>
+                    <li>zapomoga: <strong>otwarte</strong></li>
+                    <li>stypendium doktoranckie: <strong>do 20 września</strong></li>
+                    <li>zwiększenie stypendium doktoranckiego z dotacji projakościowej: <strong>do 20 września</strong></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <div class="subjectList" id="box2" style="display:none">
+        <div>
+            <h1> Twoja lista przedmiotów: </h1>
+
+            Nazwa Przedmiotu: <input type="text" value="Nazwa Przedmiotu" id="nameSubject" />
+            Termin: <input type="text" value="Nazwisko prowadzącego" id="lastName" />
+            <input type="submit" value="Dodaj Przedmiot" class="targetSubject" />
+            
+            <ul class="connectedSortable" id="example"></ul>
+            <div class="month">
+                <ul>
+                    <li class="prev">&#10094;</li>
+                    <li class="next">&#10095;</li>
+                    <li>Grudzień<br><span style="font-size:18px">2018</span></li>
+                </ul>
+            </div>
+
+            <ul class="weekdays">
+                <li>Mo</li>
+                <li>Tu</li>
+                <li>We</li>
+                <li>Th</li>
+                <li>Fr</li>
+                <li>Sa</li>
+                <li>Su</li>
+            </ul>
+            <ul id='days' class="connectedSortable">
+                <li id="number">1:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">2:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">3:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">4:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">5:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">6:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">7:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">8:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">9:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">10:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">11:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">12:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">13:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">14:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">15:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">16:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">17:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">18:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">19:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">20:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">21:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">22:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">23:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">24:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">25:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">26:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">27:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">28:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">29:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">30:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">31:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+            </ul>
+
+            <script>
+                $('.targetSubject').click(function () {
+                    var value1 = document.getElementById('nameSubject').value;
+                    var value2 = document.getElementById('lastName').value;
+                    $("#example").append("<li>" + value1 + "\n" + value2 + "</li>");
+                });
+                $(document).ready(function () {
+                    $("#example").click(function (e) {
+                        var txt = $(e.target).text();
+                        console.log(txt);
+                        $("#daysList").append($("<li>").text(txt));
+                    });
+                });
+                $("ul").sortable({
+                    connectWith: "ul",
+                    start: function (event, ui) {
+                        ui.item.toggleClass("highlight");
+                    },
+                    stop: function (event, ui) {
+                        ui.item.toggleClass("highlight");
+                    }
+                });
+            </script>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; @DateTime.Now.Year — Usososo</p>
+    </footer>
 </body>
 </html>

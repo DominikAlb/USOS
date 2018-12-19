@@ -104,7 +104,7 @@
     <Content Include="css\angular-chart.min.css" />
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.min.css" />
-    <Content Include="css\styles.css" />
+    <Content Include="css\styless.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-chart.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
