@@ -1,1 +1,46 @@
-﻿<b>Courses</b>
+﻿
+<!--<button type="button" name="load_data" id="load_data">Load Data</button>
+<div id="courses_table">
+
+</div>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#load_data').click(function () {
+            $.ajax({
+                url: "yourCourses.csv",
+                dataType: "text",
+            }).done(successFunction);
+        });
+    });
+
+    function successFunction(data) {
+        console.log(data);
+        var str = data;
+
+        var courses_data = str.split(/\r?\n|\r/);
+        console.log(courses_data.length);
+
+        var table_data = '<table class="courses_table>"';
+        table_data += '<tr>';
+        table_data += '<th>Course<th>';
+        table_data += '<th>Instructior<th>';
+        table_data += '<th>Day<th>';
+        table_data += '<th>Starts<th>';
+        table_data += '<th>Ends<th>';
+        table_data += '</tr>';
+
+        for (var count = 0; count < courses_data.lenght; count++) {
+            var cell_data = courses_data[count].split(",");
+            table_data += '<tr>';
+            for (var cell_count = 0; cell_count < cell_data.lenght; cell_count++) {
+                table_data += '<td>' + cell_data[cell_count] + '</td>';
+            }
+            table_data += '</tr>';
+        }
+        table_data += '</table>';
+        $('#courses_table').html(table_data);
+    }
+
+</script>-->

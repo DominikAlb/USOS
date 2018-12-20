@@ -1,0 +1,228 @@
+﻿nav {
+    color: white;
+    background-color: forestgreen;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.navList {
+    overflow: hidden;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .navList > li {
+        float: left;
+        text-decoration: none;
+    }
+
+a.navContent {
+    text-decoration: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px 14px;
+}
+
+    a.navContent:hover {
+        color: forestgreen;
+        background-color: white;
+    }
+
+.content {
+    margin-top: 60px;
+}
+
+footer {
+    border-top: solid 1px;
+    border-top-color: forestgreen;
+    margin-top: 20px;
+    padding-top: 8px;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: forestgreen;
+    color: white;
+    padding: 16px 14px;
+    border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 14px;
+        text-decoration: none;
+        display: block;
+    }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: forestgreen;
+            color: white;
+        }
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: white;
+    color: forestgreen
+}
+
+.wiersz {
+    left: 30px;
+    padding: 25px;
+    margin: auto;
+}
+
+.USOSnews h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 0 1px 2px white;
+    color: #330000;
+    text-align: left;
+}
+
+.USOSnews {
+    border: 1px solid #CCC;
+    box-shadow: 0 5px 10px #CCC;
+    border-radius: 5px;
+    font-family: verdana;
+    margin: 5px 0px 10px 0px;
+}
+.wnioski header {
+    border: 1px solid #CCC;
+    box-shadow: 0 5px 10px #CCC;
+    background-image: linear-gradient(#ffe9cb, #fce8be);
+}
+.wnioski section {
+    background-image: linear-gradient(#fcf2e4, #fff2d3);
+}
+body.dragging, body.dragging * {
+    cursor: move !important;
+}
+
+.dragged {
+    position: absolute;
+    opacity: 0.5;
+    z-index: 2000;
+}
+
+ol.example li.placeholder {
+    position: relative;
+    /** More li styles **/
+}
+
+    ol.example li.placeholder:before {
+        position: absolute;
+        /** Define arrowhead **/
+    }
+.example {
+    list-style-type: none;
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+.example li {
+    display: inline-block;
+    width: 13.6%;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 12px;
+    color: #777;
+}
+ul {list-style-type: none;}
+body {font-family: Verdana, sans-serif;}
+
+/* Month header */
+.month {
+  padding: 70px 25px;
+  width: 100%;
+  background: forestgreen;
+  text-align: center;
+}
+
+/* Month list */
+.month ul {
+  margin: 0;
+  padding: 0;
+}
+
+.month ul li {
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* Previous button inside month header */
+.month .prev {
+  float: left;
+  padding-top: 10px;
+}
+
+/* Next button */
+.month .next {
+  float: right;
+  padding-top: 10px;
+}
+
+/* Weekdays (Mon-Sun) */
+.weekdays {
+  margin: 0;
+  padding: 10px 0;
+  background-color:#ddd;
+}
+
+.weekdays li {
+  display: inline-block;
+  width: 13.6%;
+  color: #666;
+  text-align: center;
+}
+
+/* Days (1-31) */
+#days {
+  padding: 10px 0;
+  background: #eee;
+  margin: 0;
+}
+
+#number {
+    list-style-type: none;
+    display: inline-flex;
+    width: 13.6%;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 12px;
+    color: #777;
+    height: 175px;
+    width: 175px;
+}
+/* Highlight the "current" day */
+#days li .active {
+  padding: 5px;
+  color: white !important
+}
