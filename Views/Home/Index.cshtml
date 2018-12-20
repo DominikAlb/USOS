@@ -19,7 +19,61 @@
     <script src="~/Scripts/Chart.min.js"></script>
     <script src="~/Scripts/angular-chart.min.js"></script>
     <link href="~/css/angular-chart.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            function hideShow(el) {
+                $("#box").hide();
+                $("#box2").hide();
+                $("#box3").hide();
+                $("#box4").hide();
+                $("#box5").hide();
+                $("." + el).show();
+                $(".navContent").removeClass("active");
+                $('a[href="#' + el + '"]').addClass("active");
+            };
+            $("#Home").click(function () {
+                hideShow("wiersz");
+            });
+            $("#Calendar").click(function () {
+                hideShow("subjectList");
+            });
+            $("#Courses").click(function () {
+                hideShow("myFuckingDiv");
+            });
+            $("#SearchForCourse").click(function () {
+                hideShow("searchForCourse");
+            });
+            $("#SearchForPerson").click(function () {
+                hideShow("searchForPerson");
+            });
+            var el = window.location.hash;
+            if (el.length > 0) {
+                el = el.substr(1);
+                if ($('a[href="#' + el + '"]')[0]) {
+                    hideShow(el);
+                } else {
+                    hideShow("breakfast");
+                }
+            }
+            $('.tab').click(function (e) {
+                e.preventDefault();
+                hideShow(this.hash.substr(1));
+            });
+        });
 
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(function () {
+                $(".example, .days").sortable({
+                    connectWith: "connectedSep"
+                }).disableSelection();
+            });
+        });
+    </script>
     <script src="~/SPA/Controller/HomeController.js"></script>
     <script src="~/SPA/Controller/CalendarController.js"></script>
     <script src="~/SPA/Controller/CoursesController.js"></script>
@@ -27,25 +81,30 @@
     <script src="~/SPA/Controller/SearchForPersonController.js"></script>
     <script src="~/SPA/Controller/MainController.js"></script>
     <script src="~/SPA/App.js"></script>
+    <script src="https://johnny.github.io/jquery-sortable/js/jquery-sortable.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <link rel="stylesheet" href="~/css/styles.css" />
+    <link rel="stylesheet" href="css/styless.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="~/css/coursesStyle.css" />
 </head>
 <body>
     <div ng-app="App" ng-controller="MainController">
         <nav>
             <div style="float:left">
                 <ul class="navList">
-                    <li><a href="#/home" class="navContent">Home</a></li>
-                    <li><a href="#/calendar" class="navContent">Calendar</a></li>
-                    <li><a href="#/courses" class="navContent">Your courses</a></li>
+                    <li><a href="/#/wnioski" class="navContent" id="Home">Home</a></li>
+                    <li><a href="/#/calendar" class="navContent" id="Calendar">Calendar</a></li>
+                    <li><a href="/#/courses" class="navContent" id="Courses">Your courses</a></li>
                     <li style="clear: both"></li>
                 </ul>
             </div>
             <div class="dropdown">
                 <button class="dropbtn">Search</button>
                 <div class="dropdown-content">
-                    <a href="#/search/person">Person</a>
-                    <a href="#/search/course">Course</a>
+                    <a href="/#/search/person" id="SearchForPerson">Person</a>
+                    <a href="/#/search/course" id="SearchForCourse">Course</a>
                 </div>
             </div>
             <div style="clear: both"></div>
@@ -55,10 +114,352 @@
 
         </div>
 
-        <footer>
-            <p>&copy; @DateTime.Now.Year — Usososo</p>
-        </footer>
 
     </div>
+    <div class="wiersz" id="box" style="display:none">
+        <div class="USOSnews wnioski" style="width:100%;">
+            <header>
+                <h1 id="wnioski">Wnioski o świadczenia na rok akademicki 2018/2019</h1>
+            </header>
+            <section id="wnioski" style="column-count: 1;">
+
+                @*<p><img src="Models/skocz.gif" style="padding: 2px 4px 0 0;">wniosek o stypendium ministra: <strong>otwarte, terminy:&nbsp;<a href="http://www.studiuje.uj.edu.pl/studenci/pomoc-materialna/stypendium-ministra">studenci</a> | <a href="http://www.studiuje.uj.edu.pl/doktoranci/pomoc-materialna/stypendium-ministra">doktoranci</a></strong></p>
+                    <p><img src="Models/skocz.gif" style="padding: 2px 4px 0 0;">oświadczenie o dochodach 2017:&nbsp;<strong>otwarte</strong><br></p>
+                    <p><img src="Models/skocz.gif" style="padding: 2px 4px 0 0;">wniosek o dom studencki:</p>*@
+                <ul>
+                    <li>studenci UJ:&nbsp;<strong>III tura, od 18 do 24 września</strong><br>Wniosek o miejsce w domu studenckim w III turze składa się osobiście 24 września w godz. 14:00-18;00 przy ul. Czapskich 4, pokoje 15-22. Wnioski przyjmuje UKE SSUJ.</li>
+                    <li>doktoranci UJ:&nbsp;<strong>II tura, od 1 do 11 września</strong></li>
+                    <li>studenci cudzoziemcy – rozpoczynający naukę na UJ:&nbsp;<strong>od 14 do 25 września</strong></li>
+                    <li>studenci i doktoranci UJ CM:&nbsp;<strong>tura ciągła - miejsca przyznawane w miarę dostępności do V 2019</strong></li>
+                </ul>
+                @*<p><img src="Models/skocz.gif" style="padding: 2px 4px 0 0;">wnioski o stypendia i zapomogę – studenci:</p>*@
+                <ul>
+                    <li>stypendium socjalne:<strong> do 30 września</strong></li>
+                    <li>stypendium specjalne dla osób niepełnosprawnych: <strong>do 30 września</strong></li>
+                    <li>stypendium rektora dla najlepszych studentów: <strong>do 20 października</strong></li>
+                    <li>zapomoga: <strong>otwarte</strong></li>
+                </ul>
+                @*<p><img src="Models/skocz.gif" style="padding: 2px 4px 0 0;">wnioski o stypendia i zapomogę – doktoranci:</p>*@
+                <ul>
+                    <li>stypendium socjalne:&nbsp;<strong>do 15 października</strong></li>
+                    <li>stypendium specjalne dla osób niepełnosprawnych: <strong>do 15 października</strong></li>
+                    <li>stypendium dla najlepszych doktorantów: <strong>do 15 października</strong></li>
+                    <li>zapomoga: <strong>otwarte</strong></li>
+                    <li>stypendium doktoranckie: <strong>do 20 września</strong></li>
+                    <li>zwiększenie stypendium doktoranckiego z dotacji projakościowej: <strong>do 20 września</strong></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <div class="subjectList" id="box2" style="display:none">
+        <div>
+            <h1> Twoja lista przedmiotów: </h1>
+
+            Nazwa Przedmiotu: <input type="text" value="Nazwa Przedmiotu" id="nameSubject" />
+            Termin: <input type="text" value="Nazwisko prowadzącego" id="lastName" />
+            <input type="submit" value="Dodaj Przedmiot" class="targetSubject" />
+
+            <ul class="connectedSortable" id="example"></ul>
+            <div class="month">
+                <ul>
+                    <li class="prev">&#10094;</li>
+                    <li class="next">&#10095;</li>
+                    <li>Grudzień<br><span style="font-size:18px">2018</span></li>
+                </ul>
+            </div>
+
+            <ul class="weekdays">
+                <li>Mo</li>
+                <li>Tu</li>
+                <li>We</li>
+                <li>Th</li>
+                <li>Fr</li>
+                <li>Sa</li>
+                <li>Su</li>
+            </ul>
+            <ul id='days' class="connectedSortable">
+                <li id="number">1:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">2:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">3:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">4:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">5:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">6:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">7:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">8:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">9:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">10:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">11:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">12:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">13:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">14:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">15:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">16:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">17:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">18:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">19:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">20:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">21:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">22:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">23:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">24:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">25:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">26:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">27:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">28:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">29:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">30:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+                <li id="number">31:<ul id="daysList" class="connectedSortable"><li>Terminy:</li></ul></li>
+            </ul>
+
+            <script>
+                $('.targetSubject').click(function () {
+                    var value1 = document.getElementById('nameSubject').value;
+                    var value2 = document.getElementById('lastName').value;
+                    $("#example").append("<li>" + value1 + "\n" + value2 + "</li>");
+                });
+                $(document).ready(function () {
+                    $("#example").click(function (e) {
+                        var txt = $(e.target).text();
+                        console.log(txt);
+                        $("#daysList").append($("<li>").text(txt));
+                    });
+                });
+                $("ul").sortable({
+                    connectWith: "ul",
+                    start: function (event, ui) {
+                        ui.item.toggleClass("highlight");
+                    },
+                    stop: function (event, ui) {
+                        ui.item.toggleClass("highlight");
+                    }
+                });
+            </script>
+        </div>
+
+    </div>
+
+    <div class="myFuckingDiv" id="box3">
+        <input type="text" id="courseInput" onkeyup="searchForCourses('courseInput', 'coursesTable')" placeholder="Search for courses...">
+        <input type="text" id="nameInput" onkeyup="searchForNames(" nameInput","coursesTable")" placeholder="Search for names...">
+        <div style="clear:both"></div>
+
+        <div id="courses_table">
+
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                $.ajax({
+                    url: "Data/yourCourses.csv",
+                    dataType: "text",
+                }).done(successFunction);
+            });
+
+
+            function successFunction(data) {
+                var str = data;
+
+                var courses_data = str.split('\n');
+
+                var table_data = '<table class="coursesTable>" id="coursesTable"';
+                table_data += '<tr class="coursesTr">';
+                table_data += '<th onclick="sortTable(0,\'' + "coursesTable" + '\')" class="coursesTh">Course</th>';
+                table_data += '<th onclick="sortTable(1,\'' + "coursesTable" + '\')" class="coursesTh">Instructor</th>';
+                table_data += '<th onclick="sortTable(2,\'' + "coursesTable" + '\')" class="coursesTh">Day</th>';
+                table_data += '<th onclick="sortTable(3,\'' + "coursesTable" + '\')" class="coursesTh">Starts</th>';
+                table_data += '<th onclick="sortTable(4,\'' + "coursesTable" + '\')" class="coursesTh">Ends</th>';
+                table_data += '<th onclick="sortTable(5,\'' + "coursesTable" + '\')" class="coursesTh">Room</th>';
+                table_data += '<th onclick="sortTable(6,\'' + "coursesTable" + '\')" class="coursesTh">Type</th>';
+                table_data += '</tr>';
+
+                for (var count = 0; count < courses_data.length; count++) {
+                    var cell_data = courses_data[count].trim().split(",");
+                    table_data += '<tr class="coursesTr">';
+                    for (var cell_count = 0; cell_count < cell_data.length; cell_count++) {
+                        table_data += '<td class="coursesTd">' + cell_data[cell_count] + '</td>';
+                    }
+                    table_data += '</tr>';
+                }
+                table_data += '</table>';
+                $('#courses_table').html(table_data);
+            }
+
+        </script>
+
+        <script>
+            // search for
+            function searchForCourses(inputName, tableName) {
+                // Declare variables
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById(inputName);
+                filter = input.value.toUpperCase();
+                table = document.getElementById(tableName);
+                tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+
+            // sorting table
+            function sortTable(n, tableName) {
+                console.log("sorting on " + n);
+                var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+                table = document.getElementById(tableName);
+                switching = true;
+                // Set the sorting direction to ascending:
+                dir = "asc";
+                /* Make a loop that will continue until
+                no switching has been done: */
+                while (switching) {
+                    // Start by saying: no switching is done:
+                    switching = false;
+                    rows = table.rows;
+                    /* Loop through all table rows (except the
+                    first, which contains table headers): */
+                    for (i = 1; i < (rows.length - 1); i++) {
+                        // Start by saying there should be no switching:
+                        shouldSwitch = false;
+                        /* Get the two elements you want to compare,
+                        one from current row and one from the next: */
+                        x = rows[i].getElementsByTagName("TD")[n];
+                        y = rows[i + 1].getElementsByTagName("TD")[n];
+                        /* Check if the two rows should switch place,
+                        based on the direction, asc or desc: */
+                        if (dir == "asc") {
+                            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                                // If so, mark as a switch and break the loop:
+                                shouldSwitch = true;
+                                break;
+                            }
+                        } else if (dir == "desc") {
+                            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                                // If so, mark as a switch and break the loop:
+                                shouldSwitch = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (shouldSwitch) {
+                        /* If a switch has been marked, make the switch
+                        and mark that a switch has been done: */
+                        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                        switching = true;
+                        // Each time a switch is done, increase this count by 1:
+                        switchcount++;
+                    } else {
+                        /* If no switching has been done AND the direction is "asc",
+                        set the direction to "desc" and run the while loop again. */
+                        if (switchcount == 0 && dir == "asc") {
+                            dir = "desc";
+                            switching = true;
+                        }
+                    }
+                }
+            }
+        </script>
+    </div>
+
+    <div class="searchForCourse" id="box4" style="display:none">
+        <input type="text" id="coursesInput" onkeyup="searchForCourses('coursesInput', 'coursesSearchTable')" placeholder="Search for courses...">
+        <div id="courses_search_table"></div>
+
+        <script>
+            $(document).ready(function () {
+                $.ajax({
+                    url: "Data/courses.csv",
+                    dataType: "text",
+                }).done(successFunctionCourses);
+            });
+
+
+            function successFunctionCourses(data) {
+                var str = data;
+
+                var courses_data = str.split('\n');
+
+                var table_data = '<table class="coursesSearchTable>" id="coursesSearchTable"';
+                table_data += '<tr class="coursesTr">';
+                table_data += '<th onclick="sortTable(0,\'' + "coursesSearchTable" + '\')" class="coursesTh">Course</th>';
+                table_data += '<th onclick="sortTable(1,\'' + "coursesSearchTable" + '\')" class="coursesTh">Instructor</th>';
+                table_data += '<th onclick="sortTable(2,\'' + "coursesSearchTable" + '\')" class="coursesTh">Day</th>';
+                table_data += '<th onclick="sortTable(3,\'' + "coursesSearchTable" + '\')" class="coursesTh">Starts</th>';
+                table_data += '<th onclick="sortTable(4,\'' + "coursesSearchTable" + '\')" class="coursesTh">Ends</th>';
+                table_data += '<th onclick="sortTable(5,\'' + "coursesSearchTable" + '\')" class="coursesTh">Room</th>';
+                table_data += '<th onclick="sortTable(6,\'' + "coursesSearchTable" + '\')" class="coursesTh">Type</th>';
+                table_data += '<th onclick="sortTable(7,\'' + "coursesSearchTable" + '\')" class="coursesTh">Number of students</th>';
+                table_data += '<th onclick="sortTable(8,\'' + "coursesSearchTable" + '\')" class="coursesTh">Places available</th>';
+                table_data += '<th onclick="sortTable(9,\'' + "coursesSearchTable" + '\')" class="coursesTh">Examination</th>';
+                table_data += '</tr>';
+
+                for (var count = 0; count < courses_data.length; count++) {
+                    var cell_data = courses_data[count].trim().split(",");
+                    table_data += '<tr class="coursesTr">';
+                    for (var cell_count = 0; cell_count < cell_data.length; cell_count++) {
+                        table_data += '<td class="coursesTd">' + cell_data[cell_count] + '</td>';
+                    }
+                    table_data += '</tr>';
+                }
+                table_data += '</table>';
+                $('#courses_search_table').html(table_data);
+            }
+
+        </script>
+    </div>
+
+    <div class="searchForPerson" id="box5" style="display:none">
+        <input type="text" id="personInput" onkeyup="searchForCourses('personInput', 'peopleSearchTable')" placeholder="Search for person...">
+        <div id="people_search_table"></div>
+
+        <script>
+            $(document).ready(function () {
+                $.ajax({
+                    url: "Data/people.csv",
+                    dataType: "text",
+                }).done(successFunctionPeople);
+            });
+
+
+            function successFunctionPeople(data) {
+                var str = data;
+
+                var courses_data = str.split('\n');
+
+                var table_data = '<table class="peopleSearchTable>" id="peopleSearchTable"';
+                table_data += '<tr class="coursesTr">';
+                table_data += '<th onclick="sortTable(0,\'' + "peopleSearchTable" + '\')" class="coursesTh">First name</th>';
+                table_data += '<th onclick="sortTable(1,\'' + "peopleSearchTable" + '\')" class="coursesTh">Second name</th>';
+                table_data += '<th onclick="sortTable(2,\'' + "peopleSearchTable" + '\')" class="coursesTh">Room</th>';
+                table_data += '<th onclick="sortTable(3,\'' + "peopleSearchTable" + '\')" class="coursesTh">Phone</th>';
+                table_data += '<th onclick="sortTable(4,\'' + "peopleSearchTable" + '\')" class="coursesTh">Email</th>';
+                table_data += '</tr>';
+
+                for (var count = 0; count < courses_data.length; count++) {
+                    var cell_data = courses_data[count].trim().split(",");
+                    table_data += '<tr class="coursesTr">';
+                    for (var cell_count = 0; cell_count < cell_data.length; cell_count++) {
+                        table_data += '<td class="coursesTd">' + cell_data[cell_count] + '</td>';
+                    }
+                    table_data += '</tr>';
+                }
+                table_data += '</table>';
+                $('#people_search_table').html(table_data);
+            }
+
+        </script>
+    </div>
+
+    <footer>
+        <p>&copy; @DateTime.Now.Year — Usososo</p>
+    </footer>
 </body>
 </html>

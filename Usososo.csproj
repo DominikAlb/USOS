@@ -104,7 +104,9 @@
     <Content Include="css\angular-chart.min.css" />
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\coursesStyle.css" />
     <Content Include="css\styles.css" />
+    <Content Include="css\styless.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-chart.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -134,7 +136,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Data\courses.csv" />
+    <Content Include="Data\people.csv" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
@@ -143,6 +149,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="Data\yourCourses.csv" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
